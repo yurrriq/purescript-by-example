@@ -5,7 +5,7 @@ import Control.Monad.Eff.Console
 import Math (sqrt)
 
 
-main = log "Hello, World!"
+main = print (diagonal 3.0 4.0)
 
 diagonal :: Number -> Number -> Number
 diagonal w h = sqrt (w * w + h * h)
