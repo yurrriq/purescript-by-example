@@ -20,3 +20,16 @@ type Address =
   , city   :: String
   , state  :: String
   }
+
+
+-- | Given an 'Address', return a string representation.
+showAddress :: Address -> String
+showAddress addr = addr.street ++ ", " ++
+                   addr.city   ++ ", " ++
+                   addr.state
+
+-- | Given an 'Entry', return a string representation.
+showEntry :: Entry -> String
+showEntry entry = entry.lastName  ++ ", " ++
+                  entry.firstName ++ ": " ++
+                  showAddress entry.address
