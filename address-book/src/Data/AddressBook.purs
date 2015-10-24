@@ -27,7 +27,8 @@ emptyBook :: AddressBook
 emptyBook = empty
 
 -- | Given a first name, last name and 'AddressBook', if a matching 'Entry' is
--- present in the given address book, return just that entry, otherwise nothing.
+-- present in the given 'AddressBook', return 'Just' that 'Entry',
+-- otherwise 'Nothing'.
 findEntry :: String -> String -> AddressBook -> Maybe Entry
 findEntry firstName lastName = head <<< filter isMatch
   where
@@ -36,7 +37,7 @@ findEntry firstName lastName = head <<< filter isMatch
                      entry.lastName  == lastName)
 
 -- | Given an 'Entry' and an 'AddressBook', return an 'AddressBook' like the
--- given one, with the given entry added to it.
+-- given one, with the given 'Entry' added to it.
 insertEntry :: Entry -> AddressBook -> AddressBook
 insertEntry = Cons
 
