@@ -26,6 +26,11 @@ type Address =
 emptyBook :: AddressBook
 emptyBook = empty
 
+-- | Given an 'Entry' and an 'AddressBook', return an 'AddressBook' like the
+-- given one, with the given entry added to it.
+insertEntry :: Entry -> AddressBook -> AddressBook
+insertEntry entry book = Cons entry book
+
 -- | Given an 'Address', return a string representation.
 showAddress :: Address -> String
 showAddress addr = addr.street ++ ", " ++
