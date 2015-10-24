@@ -40,6 +40,18 @@ findEntry firstName lastName = head <<< filter isMatch
 insertEntry :: Entry -> AddressBook -> AddressBook
 insertEntry = Cons
 
+-- | Given an 'Address' and an 'AddressBook', if an 'Entry' with a matching
+-- 'Address' is present in the given 'AddressBook', return 'Just' that 'Entry',
+-- otherwise 'Nothing'.
+lookupAddress :: Address -> AddressBook -> Maybe Entry
+lookupAddress addr = head <<< filter isMatch
+  where
+    isMatch :: Entry -> Boolean
+    isMatch entry = (addr'.street == addr.street &&
+                     addr'.city   == addr.city   &&
+                     addr'.state  == addr.state)
+      where addr' = entry.address
+
 -- | Given an 'Address', return a string representation.
 showAddress :: Address -> String
 showAddress addr = addr.street ++ ", " ++
