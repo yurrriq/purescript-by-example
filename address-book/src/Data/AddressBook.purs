@@ -22,6 +22,10 @@ type Address =
   }
 
 
+-- | The empty 'AddressBook'.
+emptyBook :: AddressBook
+emptyBook = empty
+
 -- | Given an 'Address', return a string representation.
 showAddress :: Address -> String
 showAddress addr = addr.street ++ ", " ++
