@@ -3,6 +3,7 @@ module Data.AddressBook where
 import Prelude ((<<<), (++), (==), (&&))
 
 import Control.Plus (empty)
+import Data.Foldable (any)
 import Data.List (List(Cons), filter, head)
 import Data.Maybe (Maybe)
 
@@ -40,6 +41,12 @@ findEntry firstName lastName = head <<< filter isMatch
 -- given one, with the given 'Entry' added to it.
 insertEntry :: Entry -> AddressBook -> AddressBook
 insertEntry = Cons
+
+-- | Given a first name and an 'AddressBook', return 'True' if there exists
+-- an 'Entry' in the given address book that has the given first name, otherwise
+-- 'False'
+hasName :: String -> AddressBook -> Boolean
+hasName = any <<< (_ <<< _.firstName) <<< (==)
 
 -- | Given an 'Address' and an 'AddressBook', if an 'Entry' with a matching
 -- 'Address' is present in the given 'AddressBook', return 'Just' that 'Entry',
