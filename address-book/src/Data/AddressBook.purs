@@ -1,10 +1,10 @@
 module Data.AddressBook where
 
-import Prelude
+import Prelude ((<<<), (++), (==), (&&))
 
 import Control.Plus (empty)
-import Data.List
-import Data.Maybe
+import Data.List (List(Cons), filter, head)
+import Data.Maybe (Maybe)
 
 
 type AddressBook = List Entry
@@ -55,9 +55,7 @@ lookupAddress addr = head <<< filter isMatch
 
 -- | Given an 'Address', return a string representation.
 showAddress :: Address -> String
-showAddress addr = addr.street ++ ", " ++
-                   addr.city   ++ ", " ++
-                   addr.state
+showAddress addr = addr.street ++ ", " ++ addr.city ++ ", " ++ addr.state
 
 -- | Given an 'Entry', return a string representation.
 showEntry :: Entry -> String

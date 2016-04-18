@@ -1,7 +1,9 @@
 module Main where
 
-import Prelude
-import Control.Monad.Eff.Console
+import Prelude (Unit)
+import Control.Monad.Eff (Eff)
+import Control.Monad.Eff.Console (CONSOLE, print)
 
-main = do
-  log "Hello sailor!"
+
+main :: forall eff. Eff (console :: CONSOLE | eff) Unit
+main = print "Hello, AddressBook!"
